@@ -1,0 +1,6 @@
+{
+  "name": "PantryPal Project Presentation",
+  "description": "Professional 10-slide presentation deck for the PantryPal recipe recommendation system by Mrinal Khandelwal (Trainer: Gagandeep Singh).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
