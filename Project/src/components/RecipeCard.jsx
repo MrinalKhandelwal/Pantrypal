@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function RecipeCard({ recipe }) {
 
   return (
-    <div className="card h-100 shadow-sm border-0 rounded-4 overflow-hidden p-3">
+    <div className="card h-100 shadow border-0 rounded-4 overflow-hidden p-3">
 
       {/* Recipe ki image */}
       <img
