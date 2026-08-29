@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import RecipeCard from '../components/RecipeCard';
 export default function Home() {
-    const [ingredient, setIngredient] = useState(""); //ingredient input lene krne ke liye
+  const [ingredient, setIngredient] = useState(""); //ingredient input lene krne ke liye
   const [ingredients, setIngredients] = useState([]); //ingredient input store krne ke liye
   const [recipes, setRecipes] = useState([]); //stores the recipe fetched from the api
   const [loading, setLoading] = useState(false); //batayega agar api request run kar rhi h toh
@@ -138,14 +138,7 @@ console.log("API responses:", data);
         );
 
 
-        // ------------------------------------------
-// STEP 4: Har recipe ki FULL details fetch karo
-// ------------------------------------------
-
-// Bahut saari recipes ki details ek saath fetch karne se
-// API par unnecessary load aa sakta hai.
-//
-// Isliye abhi maximum 10 recipes ki details fetch karenge.
+//Maximum 10 recipes fetch krne ke liye
 const recipesToFetch = uniqueRecipes.slice(0, 10);
 
 
@@ -153,53 +146,46 @@ const recipesToFetch = uniqueRecipes.slice(0, 10);
 const fullRecipes = [];
 
 
-// Recipes ko ek-ek karke fetch karenge
-for (const recipe of recipesToFetch) {
+  // Recipes ko ek-ek karke fetch karenge
+  for (const recipe of recipesToFetch) {
 
-  try {
+    try {
 
-    // Current recipe ki full details ke liye API request
-    const response = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
-    );
-
-
-    // Response ko JSON mein convert karo
-    const data = await response.json();
+      // Current recipe ki full details ke liye API request
+      const response = await fetch(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipe.idMeal}`
+      );
 
 
-    // Agar recipe mili hai toh usko fullRecipes mein add karo
-    if (data.meals && data.meals.length > 0) {
-      fullRecipes.push(data.meals[0]);
+      // Response ko JSON mein convert karo
+      const data = await response.json();
+
+
+      // Agar recipe mili hai toh usko fullRecipes mein add karo
+      if (data.meals && data.meals.length > 0) {
+        fullRecipes.push(data.meals[0]);
+      }
+
+    } catch (error) {
+
+      // Agar ek recipe ki request fail ho jaaye
+      // toh baaki recipes ko fetch karna continue rahe
+      console.log(
+        "Error fetching recipe:",
+        recipe.idMeal,
+        error
+      );
+
     }
-
-  } catch (error) {
-
-    // Agar ek recipe ki request fail ho jaaye
-    // toh baaki recipes ko fetch karna continue rahe
-    console.log(
-      "Error fetching recipe:",
-      recipe.idMeal,
-      error
-    );
-
   }
-}
 
-
-        // ------------------------------------------
-        // STEP 6: Har recipe ka match percentage calculate karo
-        // ------------------------------------------
-
+      //Har recipe ka match percentage calculate krne ke liye
         const recipesWithMatch = fullRecipes.map((recipe) =>
         calculateMatch(recipe)
         );
 
 
-        // ------------------------------------------
-        // STEP 7: Highest match ko sabse upar rakho
-        // ------------------------------------------
-
+        //Highest match ko upar rakhne ke liye
         recipesWithMatch.sort(
         (a, b) => b.matchPercentage - a.matchPercentage
         );
@@ -221,14 +207,14 @@ for (const recipe of recipesToFetch) {
 
   return (
     <div className="container-fluid py-5" style={{backgroundColor: "#1e1e1e",minHeight: "100vh", width: "100%"}}>
-                <h1 className="display-4 fw-bold text-warning text-center">🍳 PantryPal</h1>
-                <p className="lead text-secondary text-center mb-4">
-                  Tell us what you have. We'll tell you what to cook.
+                <h1 className="display-4 fw-bold text-warning text-center fst-italic font-monospace">🍳 PantryPal</h1>
+                <p className="lead fw-bold text-white font-monospace fst-italic text-center mb-4" >
+                  Tell us what you have, We'll tell you what to cook.
                 </p>
                 <div className="input-group mb-4 mx-auto" style={{ maxWidth: "650px" }}>
                   <input
                     type="text"
-                    className="form-control"
+                    className="form-control fst-italic"
                     placeholder="Enter an ingredient..."
                     value={ingredient}
                     onChange={(e) => setIngredient(e.target.value)}
@@ -238,14 +224,14 @@ for (const recipe of recipesToFetch) {
                       }
                     }}
                   />
-                  <button className="btn btn-warning" onClick={addIngredient}>
+                  <button className="btn btn-secondary" onClick={addIngredient}>
                     + Add
                   </button>
                 </div>
                 <div className="d-flex flex-wrap justify-content-center gap-2 mb-4">
                   {ingredients.map((item, index) => (
-                   <div className="badge text-bg-light border p-2 fs-6" key={index}> {/*har item ko key de deta hai identification ke liye*/}
-                      <span>🍴 {item}</span>
+                   <div className="badge text-bg-light border p-2 fs-5" key={index}> {/*har item ko key de deta hai identification ke liye*/}
+                      <span className=' text-success p-3 font-monospace rounded'>🍴 {item}</span>
 
                       <button className="btn btn-sm text-danger ms-2 p-0" onClick={() => removeIngredient(index)}> {/*bina () ke apne aap call ho jaata*/}
                         X
@@ -268,7 +254,7 @@ for (const recipe of recipesToFetch) {
                 </div>
                 {/*Conditional rendering - jab minimum ek item ho tabhi find recipe ka button dikaaye */}
                 {ingredients.length > 0 && (
-                  <button className="btn btn-success btn-lg px-4 d-block mx-auto mb-4" onClick={findRecipes}>
+                  <button className="btn btn-success btn-lg px-4 d-block mx-auto mb-4 mt-4" onClick={findRecipes}>
                     🔍 Find Recipes
                   </button>
                 )}
