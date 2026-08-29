@@ -254,7 +254,7 @@ const fullRecipes = [];
                 </div>
                 {/*Conditional rendering - jab minimum ek item ho tabhi find recipe ka button dikaaye */}
                 {ingredients.length > 0 && (
-                  <button className="btn btn-lg px-4 d-block mx-auto mb-4 mt-4" onClick={findRecipes}>
+                  <button className="btn btn-success btn-lg px-4 d-block mx-auto mb-4 mt-4" onClick={findRecipes}>
                     🔍 Find Recipes
                   </button>
                 )}
