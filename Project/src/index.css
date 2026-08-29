@@ -113,3 +113,11 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation timing */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Increases card size by 5% */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Adds depth */
+}
