@@ -206,7 +206,7 @@ const fullRecipes = [];
     };
 
   return (
-    <div className="container-fluid py-5" style={{backgroundColor: "#1e1e1e",minHeight: "100vh", width: "100%"}}>
+    <div className="container-fluid py-5" style={{backgroundColor: "#fff",minHeight: "100vh", width: "100%"}}>
                 <h1 className="display-4 fw-bold text-warning text-center fst-italic font-monospace">🍳 PantryPal</h1>
                 <p className="lead fw-bold text-white font-monospace fst-italic text-center mb-4" >
                   Tell us what you have, We'll tell you what to cook.
