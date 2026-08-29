@@ -242,6 +242,12 @@ const fullRecipes = [];
                   {loading && (
                   <p className="text-center text-secondary my-4">🔍 Finding recipes...</p>
                   )}
+                {/*Conditional rendering - jab minimum ek item ho tabhi find recipe ka button dikaaye */}
+                {ingredients.length > 0 && (
+                  <button className="btn btn-success btn-lg px-4 d-block mx-auto mb-4 mt-4" onClick={findRecipes}>
+                    🔍 Find Recipes
+                  </button>
+                )}
                 <div className="row g-4">
                   {recipes.map((recipe) => ( //Recipecard me se recipe ka prop receive krta h
                     <div className="col-12 col-md-6 col-lg-4" key={recipe.idMeal}>
@@ -252,12 +258,7 @@ const fullRecipes = [];
                     </div>
                     ))}
                 </div>
-                {/*Conditional rendering - jab minimum ek item ho tabhi find recipe ka button dikaaye */}
-                {ingredients.length > 0 && (
-                  <button className="btn btn-success btn-lg px-4 d-block mx-auto mb-4 mt-4" onClick={findRecipes}>
-                    🔍 Find Recipes
-                  </button>
-                )}
+                
               </div>
             
   )
