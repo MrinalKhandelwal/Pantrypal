@@ -136,7 +136,7 @@ function RecipeDetails() {
 
 
       {/* Ingredients section */}
-      <h2>🥕 Ingredients</h2>
+      <h2 style={{color:"black"}}>🥕 Ingredients</h2>
 
 
       {/* 
@@ -166,7 +166,7 @@ function RecipeDetails() {
 
 
       {/* Recipe instructions */}
-      <h2>📖 Instructions</h2>
+      <h2 style={{color:"black"}}>📖 Instructions</h2>
 
       {/* API se complete cooking instructions */}
       <p>{recipe.strInstructions}</p>
