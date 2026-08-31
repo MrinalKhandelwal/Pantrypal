@@ -52,10 +52,7 @@
 
 body {
   margin: 0;
-  background-image: url('https://i.pinimg.com/736x/b0/72/2b/b0722b533ee8a357142082d5880d3361.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  
 }
 
 #root {
